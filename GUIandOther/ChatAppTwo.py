@@ -1,6 +1,7 @@
 import tkinter
 import requests
 import Secret
+import os
 from tkinter import Toplevel
 
 def mainWindow(username, token):
@@ -31,7 +32,8 @@ def mainWindow(username, token):
     scrollbar.pack(side="right", fill="y")
 
     def getMessage(event):
-        privateFilePath = "/Users/estolanod/Desktop/CECS 478 Fall 2018/private.pem" # File path to the private pem file path
+        #privateFilePath = "/Users/estolanod/Desktop/CECS 478 Fall 2018/private.pem" # File path to the private pem file path
+        privateFilePath = os.path.join(os.getcwd(), "private.pem")
         site = 'https://www.cecs-478.me/receive'
         tokent = {'x-access-token': token}
         payload = {'receiver': username}
@@ -57,7 +59,8 @@ def mainWindow(username, token):
     message.pack()
 
     def sendmessage():
-        pemFilePath = "/Users/estolanod/Desktop/CECS 478 Fall 2018/public.pem"
+        #pemFilePath = "/Users/estolanod/Desktop/CECS 478 Fall 2018/public.pem"
+        pemFilePath = os.path.join(os.getcwd(), "public.pem")
 
         plain = messageEntry.get().encode('utf-8')
         (ciphertext, bothkeys, hmac, random) = Secret.Encrypter(plain, pemFilePath)
