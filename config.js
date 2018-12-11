@@ -1,4 +1,4 @@
 module.exports = {
     'secret': 'ilovetoparty',
-    'database': 'mongodb://localhost/chatappdb'
+    'database': 'mongodb://localhost/chatapplicationdb'
 };

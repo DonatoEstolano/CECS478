@@ -10,7 +10,9 @@ var express = require('express'),
 
 // Configurations
 mongoose.Promise = global.Promise;
-mongoose.connect(config.database);
+mongoose.connect(config.database, function(err) {
+	Console.log(err);
+});
 app.set('secretpassword', config.secret)
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -19,7 +21,7 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 app.get('/', function(req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
+    res.send('Owned by DC Security!');
 });
 
 var routes = require('./api/routes/478routes');
@@ -30,5 +32,5 @@ app.listen(port);
 console.log('478 Chat App RESTful API server started on: ' + port);
 
 app.use(function(req, res) {
-    res.status(404).send({url: req.originalUrl + ' not found'})
+    res.status(404).send({url: req.originalUrl + ' not found'});
   });
