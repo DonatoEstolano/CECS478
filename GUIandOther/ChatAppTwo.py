@@ -7,7 +7,7 @@ from tkinter import Toplevel
 def mainWindow(username, token):
     window = tkinter.Tk() # Creates a GUI window
     window.title("Chat Application") # Applies window name
-    window.resizable(width="False", height="False") # Prevents resizing
+    #window.resizable(width="False", height="False") # Prevents resizing
 
     mainFrame = tkinter.Frame(window, width=400, height=400)
     mainFrame.pack()
